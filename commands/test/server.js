@@ -2,7 +2,7 @@ const { MessageEmbed } = require("discord.js");
 
 module.exports.run = async (inter) => {
     const Response = new MessageEmbed()
-    .setColor('BLUE')
+    .setColor('GREEN')
     .addField('Nome:', `${inter.guild.name}`, false)
     .addField('Membros:', `${inter.guild.memberCount}`, false);
 

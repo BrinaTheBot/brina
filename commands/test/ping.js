@@ -1,5 +1,11 @@
+const { MessageEmbed } = require("discord.js");
+
 module.exports.run = async (inter) => {
-    await inter.reply({ content: 'Pong!' });
+    const ping = new MessageEmbed()
+    .setColor('GREEN')
+    .setDescription('🏓 Pong!')
+
+    await inter.reply({embeds: [ping]});
 }
 
 module.exports.help = {

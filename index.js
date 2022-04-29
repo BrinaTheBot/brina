@@ -8,7 +8,7 @@ const Client = new discord.Client({
         discord.Intents.FLAGS.GUILD_MEMBERS,
         discord.Intents.FLAGS.GUILD_MESSAGES,
         discord.Intents.FLAGS.GUILD_MESSAGE_REACTIONS,
-        discord.Intents.FLAGS.DIRECT_MESSAGES
+        discord.Intents.FLAGS.GUILD_VOICE_STATES
     ],
     allowedMentions: { parse: ['users', 'roles'], repliedUser: true }
 })
@@ -22,7 +22,7 @@ module.exports.Client = Client
 // Event Handler
 fs.readdirSync('./events/').forEach(dir => {
     var jsFiles = fs.readdirSync('./events/').filter(f => f.split('.').pop() === 'js');
-    if (jsFiles.length <= 0) return console.log('[EVENTS HANDLER] - Nenhum evento encontrado! ❌');
+    if (jsFiles.length <= 0) return console.log('[EVENTS] 🔴 File not found!');
     let check = false
     jsFiles.forEach(file => {
         const eventGet = require(`./events/${file}`)
@@ -30,7 +30,7 @@ fs.readdirSync('./events/').forEach(dir => {
         try {
             Client.events.set(eventGet.name, eventGet)
             if(check == false) {
-                console.log(`[EVENTS HANDLER] - Arquivo ${file} foi carregado ✅`)
+                console.log(`[EVENTS] 🟢 ${file} was loaded!`)
                 check = true
             }
         } catch(error) {
@@ -45,11 +45,11 @@ fs.readdirSync('./commands/').forEach(dir => {
         if (err) throw err;
 
         var jsFiles = fs.readdirSync(`./commands/${dir}`).filter(f => f.split('.').pop() === 'js');
-        if (jsFiles.length <= 0) return console.log('[COMMANDS HANDLER] - Nenhum comando encontrado! ❌');
+        if (jsFiles.length <= 0) return console.log('[COMMANDS] 🔴 Command not found!');
 
         jsFiles.forEach(file => {
             var fileGet = require(`./commands/${dir}/${file}`);
-            console.log(`[COMMANDS HANDLER] - Arquivo ${file} foi carregado ✅`)
+            console.log(`[COMMANDS] 🟢 ${file} was loaded!`)
 
             try {
                 Client.commands.set(fileGet.help.name, fileGet);
