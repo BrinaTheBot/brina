@@ -1,11 +1,23 @@
 const { MessageEmbed } = require("discord.js");
 
 module.exports.run = async (inter) => {
-    const ping = new MessageEmbed()
-    .setColor('GREEN')
-    .setDescription('🏓 Pong!')
+    try {
+        const ping = new MessageEmbed()
+        .setColor('GREEN')
+        .setDescription('🏓 Pong!')
+    
+        await inter.reply({embeds: [ping]})
+        
+    } catch (error) {
+        const erro = new MessageEmbed()
+        .setColor('RED')
+        .setDescription('🔴 Ocorreu um erro ao executar o comando! Caso isso persista contate os desenvolvedores.')
+    
+        await inter.reply({embeds: [erro]})
+        
+        console.log(error)
+    }
 
-    await inter.reply({embeds: [ping]});
 }
 
 module.exports.help = {

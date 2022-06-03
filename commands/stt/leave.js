@@ -9,8 +9,10 @@ module.exports.run = async (inter) => {
             channelId: inter.member.voice.channel.id,
             guildId: inter.channel.guild.id,
             adapterCreator: inter.channel.guild.voiceAdapterCreator,
+            selfDeaf: false,
+            selfMute: true,
         })
-    
+
         connection.destroy()
     
         const desconectado = new MessageEmbed()
@@ -25,6 +27,8 @@ module.exports.run = async (inter) => {
         .setDescription('Não estou em nenhum canal de voz!')
 
         await inter.reply({embeds: [erro]})
+
+        console.log(error)
     }
 }
 
