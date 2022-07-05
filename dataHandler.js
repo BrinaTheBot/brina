@@ -15,14 +15,20 @@ async function createCmd(Client, guildId) {
         // join cmd
         {
             name: 'join',
-            description: 'Adiciona a Brina ao canal de voz'
+            description: 'Adiciona a Brina ao canal de voz',
         },
 
         // leave cmd
         {
             name: 'leave',
-            description: 'Desconecta a Brina do canal de voz'
+            description: 'Desconecta a Brina do canal de voz',
         }, 
+
+        //stt cmd
+        {
+            name: 'stt',
+            description: 'Inicia a transcrição',
+        },
     ]
 
     await Client.guilds.cache.get('965665762637389825')?.commands.set(data);

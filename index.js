@@ -1,7 +1,6 @@
 const discord = require('discord.js')
 const dotenv = require('dotenv')
 const fs = require('fs')
-const { Routes } = require('discord-api-types/v9')
 const Client = new discord.Client({
     intents: [
         discord.Intents.FLAGS.GUILDS,
@@ -17,6 +16,7 @@ dotenv.config()
 
 Client.commands = new discord.Collection();
 Client.events = new discord.Collection();
+Client.assets = new discord.Collection();
 module.exports.Client = Client
 
 // Event Handler
@@ -60,5 +60,24 @@ fs.readdirSync('./commands/').forEach(dir => {
     });
 });
 
+// Assets Handler
+fs.readdirSync('./assets/').forEach(dir => {
+    var jsFiles = fs.readdirSync('./assets/').filter(f => f.split('.').pop() === 'js');
+    if (jsFiles.length <= 0) return console.log('[ASSSETS] 🔴 File not found!');
+    let check = false
+    jsFiles.forEach(file => {
+        const assetGet = require(`./assets/${file}`)
+
+        try {
+            Client.assets.set(assetGet.name, assetGet)
+            if(check == false) {
+                console.log(`[ASSETS] 🟢 ${file} was loaded!`)
+                check = true
+            }
+        } catch(error) {
+            return console.log(error)
+        }
+    });
+});
 
 Client.login(process.env.DISCORD_TOKEN);

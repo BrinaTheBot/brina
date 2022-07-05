@@ -1,9 +1,18 @@
 const Client = require('../../index').Client
 const { MessageEmbed } = require('discord.js')
-const { joinVoiceChannel } = require('@discordjs/voice')
+const { joinVoiceChannel, getVoiceConnection, VoiceConnectionStatus } = require('@discordjs/voice')
 
 module.exports.run = async (inter) => {
     try {
+        // If user is not in a voice channel
+        const noChannel = new MessageEmbed()
+        .setColor('ORANGE')
+        .setDescription('Entre em um canal de voz antes de usar o comando `/join`!')
+
+        if(!inter.member.voice.channel){return await inter.reply({embeds: [noChannel]})}
+
+        /* ---- If user is in a voice channel ---  */
+        // Create voice connection
         const connection = joinVoiceChannel({
             channelId: inter.member.voice.channel.id,
             guildId: inter.channel.guild.id,
@@ -12,30 +21,25 @@ module.exports.run = async (inter) => {
             selfMute: true,
         })
 
-        connection     
+        // join channel
+        connection    
 
-        connection.receiver.speaking.on('start', userId => console.log(`User ${userId} started speaking`))
-        connection.receiver.speaking.on('end', userId => console.log(`User ${userId} stopped speaking`))
-
-        /*
-        const opusStream = connection.receiver.subscribe(userId, {
-            end: {
-              behavior: EndBehaviorType.AfterSilence,
-              duration: 100,
-            },
-        })
-        */
-        
+        // Interaction reply        
         const conectado = new MessageEmbed()
         .setColor('GREEN')
         .setDescription('Estou conectada')
     
-        await inter.reply({embeds: [conectado]})
+        await inter.reply({embeds: [conectado]}) 
+
+        // voice receiver log
+        connection.receiver.speaking.on('start', userId => console.log(`User ${userId} started speaking 🔊`))
+        connection.receiver.speaking.on('end', userId => console.log(`User ${userId} stopped speaking 🔈`))
+
 
     } catch (error) {
         const erro = new MessageEmbed()
-        .setColor('ORANGE')
-        .setDescription('Entre em um canal de voz antes de usar o comando `/join`!')
+        .setColor('YELLOW')
+        .setDescription('Oh não, ocorreu um erro!\n Caso isso persista, contate os desenvolvedores.')
 
         await inter.reply({embeds: [erro]})
 
