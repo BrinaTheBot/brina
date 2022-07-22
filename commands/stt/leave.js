@@ -1,5 +1,5 @@
 const Client = require('../../index').Client
-const { MessageEmbed } = require('discord.js')
+const { EmbedBuilder } = require('discord.js')
 const { joinVoiceChannel, getVoiceConnection } = require('@discordjs/voice')
 
 
@@ -8,8 +8,8 @@ module.exports.run = async (inter) => {
         const connection = getVoiceConnection(inter.channel.guild.id)
 
         // If bot isn't in a voice channel
-        const noChannel = new MessageEmbed()
-        .setColor('ORANGE')
+        const noChannel = new EmbedBuilder()
+        .setColor('Orange')
         .setDescription('Não estou em nenhum canal de voz!')
 
         if(!connection){return await inter.reply({embeds: [noChannel]})}
@@ -17,15 +17,15 @@ module.exports.run = async (inter) => {
         // If bot is in a voice channel
         connection.destroy()
     
-        const desconectado = new MessageEmbed()
-        .setColor('RED')
+        const desconectado = new EmbedBuilder()
+        .setColor('Red')
         .setDescription('🔇 Fui desconectada')
     
         await inter.reply({embeds: [desconectado]})
 
     } catch (error) {
-        const erro = new MessageEmbed()
-        .setColor('YELLOW')
+        const erro = new EmbedBuilder()
+        .setColor('Yellow')
         .setDescription('Oh não, ocorreu um erro!\n Caso isso persista, contate os desenvolvedores.')
 
         await inter.reply({embeds: [erro]})

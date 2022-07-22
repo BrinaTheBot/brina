@@ -3,11 +3,11 @@ const dotenv = require('dotenv')
 const fs = require('fs')
 const Client = new discord.Client({
     intents: [
-        discord.Intents.FLAGS.GUILDS,
-        discord.Intents.FLAGS.GUILD_MEMBERS,
-        discord.Intents.FLAGS.GUILD_MESSAGES,
-        discord.Intents.FLAGS.GUILD_MESSAGE_REACTIONS,
-        discord.Intents.FLAGS.GUILD_VOICE_STATES
+        discord.GatewayIntentBits.Guilds,
+        discord.GatewayIntentBits.GuildMembers,
+        discord.GatewayIntentBits.GuildMessages,
+        discord.GatewayIntentBits.GuildMessageReactions,
+        discord.GatewayIntentBits.GuildVoiceStates,
     ],
     allowedMentions: { parse: ['users', 'roles'], repliedUser: true }
 })

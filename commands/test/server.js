@@ -1,18 +1,20 @@
-const { MessageEmbed } = require("discord.js");
+const { EmbedBuilder } = require("discord.js");
 
 module.exports.run = async (inter) => {
     try {
-        const Response = new MessageEmbed()
-        .setColor('GREEN')
-        .addField('Nome:', `${inter.guild.name}`, false)
-        .addField('Membros:', `${inter.guild.memberCount}`, false);
+        const Response = new EmbedBuilder()
+        .setColor('Green')
+        .addFields([
+            {name: 'Nome:', value: `${inter.guild.name}`},
+            {name: 'Membros:', value: `${inter.guild.memberCount}`},
+        ])
     
         await inter.reply({embeds: [Response]})
 
     } catch (error) {
-        const erro = new MessageEmbed()
-        .setColor('RED')
-        .setDescription('🔴 Ocorreu um erro ao executar o comando! Caso isso persista contate os desenvolvedores.')
+        const erro = new EmbedBuilder()
+        .setColor('Yellow')
+        .setDescription('Oh não, ocorreu um erro!\n Caso isso persista, contate os desenvolvedores.')
     
         await inter.reply({embeds: [erro]})
         
@@ -22,5 +24,5 @@ module.exports.run = async (inter) => {
 
 module.exports.help = {
     name: 'server',
-    memberPermissions: ['MANAGE_ROLES']
+    memberPermissions: []
 }
