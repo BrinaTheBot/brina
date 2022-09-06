@@ -6,7 +6,13 @@ async function createCmd(Client, guildId) {
             description: '[🛡 GUILD] - Responde Pong!',
         },
 
-        // 🛡 server cmd
+        // debug cmd
+        {
+            name: 'debug',
+            description: 'debug voice'
+        },
+
+        // server cmd
         {
             name: 'server',
             description: '[🛡 GUILD] - Informações do servidor',
