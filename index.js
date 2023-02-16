@@ -21,11 +21,11 @@ module.exports.Client = Client
 
 // Event Handler
 fs.readdirSync('./events/').forEach(dir => {
-    var jsFiles = fs.readdirSync('./events/').filter(f => f.split('.').pop() === 'js');
+    var jsFiles = fs.readdirSync('./src/events/').filter(f => f.split('.').pop() === 'js');
     if (jsFiles.length <= 0) return console.log('[EVENTS] 🔴 File not found!');
     let check = false
     jsFiles.forEach(file => {
-        const eventGet = require(`./events/${file}`)
+        const eventGet = require(`./src/events/${file}`)
 
         try {
             Client.events.set(eventGet.name, eventGet)
@@ -40,15 +40,15 @@ fs.readdirSync('./events/').forEach(dir => {
 });
 
 // Commands Handler
-fs.readdirSync('./commands/').forEach(dir => {
-    fs.readdir(`./commands/${dir}`, (err, files) => {
+fs.readdirSync('./src/commands/').forEach(dir => {
+    fs.readdir(`./src/commands/${dir}`, (err, files) => {
         if (err) throw err;
 
-        var jsFiles = fs.readdirSync(`./commands/${dir}`).filter(f => f.split('.').pop() === 'js');
+        var jsFiles = fs.readdirSync(`./src/commands/${dir}`).filter(f => f.split('.').pop() === 'js');
         if (jsFiles.length <= 0) return console.log('[COMMANDS] 🔴 Command not found!');
 
         jsFiles.forEach(file => {
-            var fileGet = require(`./commands/${dir}/${file}`);
+            var fileGet = require(`./src/commands/${dir}/${file}`);
             console.log(`[COMMANDS] 🟢 ${file} was loaded!`)
 
             try {
@@ -61,12 +61,12 @@ fs.readdirSync('./commands/').forEach(dir => {
 });
 
 // Assets Handler
-fs.readdirSync('./assets/').forEach(dir => {
-    var jsFiles = fs.readdirSync('./assets/').filter(f => f.split('.').pop() === 'js');
+fs.readdirSync('./src/assets/').forEach(dir => {
+    var jsFiles = fs.readdirSync('./src/assets/').filter(f => f.split('.').pop() === 'js');
     if (jsFiles.length <= 0) return console.log('[ASSSETS] 🔴 File not found!');
     let check = false
     jsFiles.forEach(file => {
-        const assetGet = require(`./assets/${file}`)
+        const assetGet = require(`./src/assets/${file}`)
 
         try {
             Client.assets.set(assetGet.name, assetGet)
