@@ -20,7 +20,7 @@ Client.assets = new discord.Collection();
 module.exports.Client = Client
 
 // Event Handler
-fs.readdirSync('./events/').forEach(dir => {
+fs.readdirSync('./src/events/').forEach(dir => {
     var jsFiles = fs.readdirSync('./src/events/').filter(f => f.split('.').pop() === 'js');
     if (jsFiles.length <= 0) return console.log('[EVENTS] 🔴 File not found!');
     let check = false
