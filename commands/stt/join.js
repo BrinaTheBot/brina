@@ -51,14 +51,8 @@ module.exports.run = async (inter) => {
             const opusStream = connection.receiver.subscribe(user, {
                 end: {
                     behavior: EndBehaviorType.AfterSilence,
-                    duration: 100,
+                    duration: 200,
                 }
-            })
-
-            // encoder
-            const encoder = new OpusEncoder('48000', 2)
-            opusStream.on('error', (e) => {
-                console.log('audiStream: ' + e)
             })
 
             let buffer = []
@@ -77,8 +71,8 @@ module.exports.run = async (inter) => {
                         const data = new Int16Array(input)
                         const ndata = data.filter((el, idx) => idx % 2);
                         return Buffer.from(ndata);
-                    } catch (e) {
-                        console.log(e)
+                    } catch (error) {
+                        console.log(error)
                         console.log('convert_audio: ' + e)
                         throw e;
                     }
@@ -90,21 +84,22 @@ module.exports.run = async (inter) => {
                     if (out != null) {
                         transcript(out, channel, user)
                     }
-                } catch (e) {
+                } catch (error) {
                     console.log('buffer: ' + e)
                 }
 
                 async function transcribe(buffer) {
                     rec.acceptWaveform(buffer)
                     let ret = rec.result().text // this isn't working
-
-                    console.log('vosk:', ret)
+                    // IT'S WORKING SO FAR
+                    console.log('vosk:' + ret)
                     return ret
                 }
 
                 function transcript(txt, user) {
                     if (txt && txt.length) {
-                        Client.channels.cache.send(user.username + ': ' + txt)
+                        //Client.channels.cache.send(user.username + ': ' + txt)
+                        console.log(user.username + ': ' + txt)
                     }
                 }
             })
