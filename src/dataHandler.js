@@ -1,60 +1,47 @@
-async function createCmd(Client, guildId) {
-    const data = [
-        // ping cmd
-        {
-            name: 'ping',
-            description: '[🛡 GUILD] - Responde Pong!',
-        },
+require('dotenv').config()
 
-        // debug cmd
-        {
-            name: 'debug',
-            description: 'debug voice'
-        },
+async function createCmd(Client) {
+  const data = [
+    {
+      name: 'ping',
+      description: '[🛡 GUILD] - Responde Pong!',
+    },
+    {
+      name: 'debug',
+      description: 'debug voice'
+    },
+    {
+      name: 'server',
+      description: '[🛡 GUILD] - Informações do servidor',
+    },
+    {
+      name: 'join',
+      description: '[🛡 GUILD] - Adiciona a Brina ao canal de voz',
+    },
+    {
+      name: 'leave',
+      description: '[🛡 GUILD] - Desconecta a Brina do canal de voz',
+    },
+    {
+      name: 'stt',
+      description: '[🛡 GUILD] - Inicia a transcrição',
+    },
+  ]
 
-        // server cmd
-        {
-            name: 'server',
-            description: '[🛡 GUILD] - Informações do servidor',
-        },
-
-        // join cmd
-        {
-            name: 'join',
-            description: '[🛡 GUILD] - Adiciona a Brina ao canal de voz',
-        },
-
-        // leave cmd
-        {
-            name: 'leave',
-            description: '[🛡 GUILD] - Desconecta a Brina do canal de voz',
-        }, 
-
-        //stt cmd
-        {
-            name: 'stt',
-            description: '[🛡 GUILD] - Inicia a transcrição',
-        },
-    ]
-
-    await Client.guilds.cache.get('965665762637389825')?.commands.set(data);
+  await Client.guilds.cache.get(process.env.SUPPORT_GUILD_ID)?.commands.set(data)
 }
 
-// GLOBAL COMMANDS
 async function globalCmd(Client) {
-    const data = [
-                // join cmd
-                {
-                    name: 'join',
-                    description: 'Adiciona a Brina ao canal de voz',
-                },
-        
-                // leave cmd
-                {
-                    name: 'leave',
-                    description: 'Desconecta a Brina do canal de voz',
-                }, 
-    ]
-    await Client.application?.commands.set(data);
+  const data = [
+    {
+      name: 'join',
+      description: 'Adiciona a Brina ao canal de voz',
+    },
+    {
+      name: 'leave',
+      description: 'Desconecta a Brina do canal de voz',
+    },
+  ]
+  await Client.application?.commands.set(data)
 }
 module.exports = { createCmd, globalCmd }
