@@ -62,11 +62,11 @@ fs.readdirSync('./src/commands/').forEach(dir => {
 
 // Assets Handler
 fs.readdirSync('./src/assets/').forEach(dir => {
-    var jsFiles = fs.readdirSync('./src/assets/').filter(f => f.split('.').pop() === 'js');
-    if (jsFiles.length <= 0) return console.log('[ASSSETS] 🔴 File not found!');
+    var jsFiles = fs.readdirSync(`./src/assets/${dir}`).filter(f => f.split('.').pop() === 'js');
+    if (jsFiles.length <= 0) return console.log('[ASSETS] 🔴 Files not found!');
     let check = false
     jsFiles.forEach(file => {
-        const assetGet = require(`./src/assets/${file}`)
+        const assetGet = require(`./src/assets/${dir}/${file}`)
 
         try {
             Client.assets.set(assetGet.name, assetGet)

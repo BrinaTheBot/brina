@@ -1,20 +1,18 @@
 const Client = require('../../../index').Client
 const { EmbedBuilder } = require('discord.js')
-const { joinVoiceChannel, getVoiceConnection } = require('@discordjs/voice')
+const { getVoiceConnection } = require('@discordjs/voice')
 
 
 module.exports.run = async (inter) => {
     try {
         const connection = getVoiceConnection(inter.channel.guild.id)
 
-        // If bot isn't in a voice channel
         const noChannel = new EmbedBuilder()
         .setColor('Orange')
         .setDescription('Não estou em nenhum canal de voz!')
 
         if(!connection){return await inter.reply({embeds: [noChannel]})}
 
-        // If bot is in a voice channel
         connection.destroy()
     
         const desconectado = new EmbedBuilder()

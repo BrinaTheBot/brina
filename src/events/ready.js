@@ -1,5 +1,7 @@
 const Client = require('../../index').Client
 const { ActivityType } = require('discord.js')
+require('dotenv').config()
+
 const { createCmd, globalCmd } = require('../dataHandler')
 
 Client.on('ready', () => {
@@ -10,5 +12,5 @@ Client.on('ready', () => {
     console.log(`${Client.user.tag} is online! 🟢`)
 
     globalCmd(Client)
-    createCmd(Client, '965665762637389825')
+    createCmd(Client, process.env.SUPPORT_GUILD_ID)
 })
