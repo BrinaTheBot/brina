@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "lint": "eslint src",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Ash Trindade",
@@ -17,5 +18,8 @@
     "libsodium-wrappers": "^0.7.10",
     "prism-media": "^1.3.5",
     "vosk": "^0.3.39"
+  },
+  "devDependencies": {
+    "eslint": "^8.36.0"
   }
 }
