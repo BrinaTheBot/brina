@@ -2,9 +2,15 @@
 ✨ Brina ✨
 </h1>
 
+<h2 align="center">
+<img alt="Ilustração de uma garota negra com dreads. Ela usa um moletom rosa e tem um gatinho branco no ombro." width=200 src="https://user-images.githubusercontent.com/92398466/227223245-3e890f87-26cb-45d8-a091-9623b6390b71.jpg">
+<br>
+<img alt="Twitter Follow" src="https://img.shields.io/twitter/follow/NikkoeNi?label=Icon%20by%3A%20%40NikkoeNi&style=social">
+</h2>
+
 <p align="center">
-<a href="https://github.com/ashtrindade/altbichinhos/blob/main/LICENSE.md"><img alt="License MIT" src="https://img.shields.io/badge/license-GPL--3.0-blue"></a> 
-<a href="https://github.com/discordjs/discord.js"><img alt="Discord.js v14" src="https://img.shields.io/badge/Discord.js-v14-7289da?style=plastic&logo=discord&logoColor=white"><a/>
+  <a href="https://github.com/ashtrindade/brina/blob/main/LICENSE"><img alt="License GPL v3" src="https://img.shields.io/github/license/ashtrindade/brina"></a> 
+  <a href="https://github.com/discordjs/discord.js"><img alt="Discord.js v14" src="https://img.shields.io/badge/Discord.js-v14-7289da?&logo=discord&logoColor=white"><a/>
 </p>
 
 Brina is an accessibility bot that offers text transcription functions. She was created to help make Discord more accessible for users with disabilities, allowing them to fully enjoy the platform.
@@ -28,3 +34,4 @@ Please, follow the [Code of Conduct](https://github.com/ashtrindade/brina/blob/m
 ## 🙇🏽‍♀️ Acknowledgements
 - [Discord.js](https://github.com/discordjs/discord.js)
 - [Vosk API](https://github.com/alphacep/vosk-api)
+- [DiscordEarsBot](https://github.com/inevolin/DiscordEarsBot)
