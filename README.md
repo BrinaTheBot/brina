@@ -5,7 +5,7 @@
 <h2 align="center">
 <img alt="Ilustração de uma garota negra com dreads. Ela usa um moletom rosa e tem um gatinho branco no ombro." width=200 src="https://user-images.githubusercontent.com/92398466/227223245-3e890f87-26cb-45d8-a091-9623b6390b71.jpg">
 <br>
-<img alt="Twitter Follow" src="https://img.shields.io/twitter/follow/NikkoeNi?label=Icon%20by%3A%20%40NikkoeNi&style=social">
+<a href="https://twitter.com/NikkoeNi"><img alt="Icon by NikkoeNi" src="https://img.shields.io/twitter/follow/NikkoeNi?label=Icon%20by%3A%20%40NikkoeNi&style=social"></a>
 </h2>
 
 <p align="center">
