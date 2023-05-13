@@ -1,3 +1,4 @@
+const { ApplicationCommandOptionType } = require('discord.js')
 require('dotenv').config()
 
 async function createCmd(Client) {
@@ -8,7 +9,7 @@ async function createCmd(Client) {
     },
     {
       name: 'debug',
-      description: 'debug voice'
+      description: '[🛡 GUILD] - Debug voice'
     },
     {
       name: 'server',
@@ -26,6 +27,22 @@ async function createCmd(Client) {
       name: 'stt',
       description: '[🛡 GUILD] - Inicia a transcrição',
     },
+    {
+      name: 'lang',
+      description: '[🛡 GUILD] - Altera o idioma do bot',
+      options: [
+        {
+          name: 'en',
+          description: 'Inglês EUA',
+          type: ApplicationCommandOptionType.Subcommand,
+        },
+        {
+          name: 'pt',
+          description: 'Português Brasileiro',
+          type: ApplicationCommandOptionType.Subcommand
+        }
+      ]
+    }
   ]
 
   await Client.guilds.cache.get(process.env.SUPPORT_GUILD_ID)?.commands.set(data)
@@ -35,12 +52,28 @@ async function globalCmd(Client) {
   const data = [
     {
       name: 'join',
-      description: 'Adiciona a Brina ao canal de voz',
+      description: 'Adicionar bot a um canal de voz',
     },
     {
       name: 'leave',
-      description: 'Desconecta a Brina do canal de voz',
+      description: 'Desconecte o bot do canal de voz',
     },
+    {
+      name: 'lang',
+      description: 'Alterar idioma do bot',
+      options: [
+        {
+          name: 'en',
+          description: 'Inglês EUA',
+          type: ApplicationCommandOptionType.Subcommand,
+        },
+        {
+          name: 'pt',
+          description: 'Português Brasileiro',
+          type: ApplicationCommandOptionType.Subcommand
+        }
+      ]
+    }
   ]
   await Client.application?.commands.set(data)
 }
