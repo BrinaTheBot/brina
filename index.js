@@ -2,6 +2,8 @@
 const discord = require('discord.js')
 const dotenv = require('dotenv')
 const fs = require('fs')
+const mongoose = require('mongoose')
+
 const Client = new discord.Client({
   intents: [
     discord.GatewayIntentBits.Guilds,
@@ -20,7 +22,6 @@ Client.events = new discord.Collection()
 Client.assets = new discord.Collection()
 module.exports.Client = Client
 
-// Event Handler
 fs.readdirSync('./src/events/').forEach(dir => {
   var jsFiles = fs.readdirSync('./src/events/').filter(f => f.split('.').pop() === 'js')
   if (jsFiles.length <= 0) return console.log('[EVENTS] 🔴 File not found!')
@@ -31,7 +32,7 @@ fs.readdirSync('./src/events/').forEach(dir => {
     try {
       Client.events.set(eventGet.name, eventGet)
       if (check == false) {
-        console.log(`[EVENTS] 🟢 ${file} was loaded!`)
+        console.log('[EVENTS] 🟢 %s was loaded!', file)
         check = true
       }
     } catch (error) {
@@ -40,7 +41,6 @@ fs.readdirSync('./src/events/').forEach(dir => {
   })
 })
 
-// Commands Handler
 fs.readdirSync('./src/commands/').forEach(dir => {
   fs.readdir(`./src/commands/${dir}`, (err) => {
     if (err) throw err
@@ -61,24 +61,7 @@ fs.readdirSync('./src/commands/').forEach(dir => {
   })
 })
 
-// Assets Handler
-fs.readdirSync('./src/assets/').forEach(dir => {
-  var jsFiles = fs.readdirSync(`./src/assets/${dir}`).filter(f => f.split('.').pop() === 'js')
-  if (jsFiles.length <= 0) return console.log('[ASSETS] 🔴 Files not found!')
-  let check = false
-  jsFiles.forEach(file => {
-    const assetGet = require(`./src/assets/${dir}/${file}`)
-
-    try {
-      Client.assets.set(assetGet.name, assetGet)
-      if (check == false) {
-        console.log(`[ASSETS] 🟢 ${file} was loaded!`)
-        check = true
-      }
-    } catch (error) {
-      return console.log(error)
-    }
-  })
-})
+mongoose.connect(process.env.DB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(console.log('[DATABASE] 🟢 Connected!'))
 
 Client.login(process.env.DISCORD_TOKEN)
