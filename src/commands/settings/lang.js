@@ -1,15 +1,19 @@
 const { EmbedBuilder } = require('discord.js')
 const loggerOperation = require('../../utils/log/loggerOperation')
+const updateGuildLangOperation = require('../../utils/guild/updateGuildLangOperation')
+const enumLang = require('../../enums/enumLang')
 
 module.exports.run = async (inter) => {
   try {
-    const ping = new EmbedBuilder()
-      .setColor('Green')
-      .setDescription('🏓 Pong!')
+    if (!inter.isChatInputCommand()) return
 
-    await inter.reply({ embeds: [ping] })
-
-    loggerOperation(inter, 'Ping')
+    if (inter.options.getSubcommand() === 'en') {
+      updateGuildLangOperation(inter, enumLang.EN_US)
+      loggerOperation(inter, 'Lang')
+    } else if (inter.options.getSubcommand() === 'pt') {
+      updateGuildLangOperation(inter, enumLang.PT_BR)
+      loggerOperation(inter, 'Lang')
+    }
 
   } catch (error) {
     const erro = new EmbedBuilder()
@@ -25,6 +29,6 @@ module.exports.run = async (inter) => {
 }
 
 module.exports.help = {
-  name: 'ping',
+  name: 'lang',
   memberPermissions: []
 }

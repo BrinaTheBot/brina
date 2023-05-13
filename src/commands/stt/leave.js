@@ -1,6 +1,6 @@
 const { EmbedBuilder } = require('discord.js')
 const { getVoiceConnection } = require('@discordjs/voice')
-
+//const loggerOperation = require('../../utils/log/loggerOperation')
 
 module.exports.run = async (inter) => {
   try {
@@ -10,7 +10,11 @@ module.exports.run = async (inter) => {
       .setColor('Orange')
       .setDescription('Não estou em nenhum canal de voz!')
 
-    if (!connection) { return await inter.reply({ embeds: [noChannel] }) }
+    if (!connection) {
+      await inter.reply({ embeds: [noChannel] })
+      // loggerOperation(inter, 'Leave')
+      return
+    }
 
     connection.destroy()
 
@@ -19,13 +23,15 @@ module.exports.run = async (inter) => {
       .setDescription('🔇 Fui desconectada')
 
     await inter.reply({ embeds: [desconectado] })
+    // loggerOperation(inter, 'Leave')
 
   } catch (error) {
     const erro = new EmbedBuilder()
       .setColor('Yellow')
-      .setDescription('Oh não, ocorreu um erro!\n Caso isso persista, contate os desenvolvedores.')
+      .setTitle('Oh não, ocorreu um erro!')
+      .setDescription('Caso isso persista, contate os desenvolvedores.')
 
-    await inter.reply({ embeds: [erro] })
+    await inter.editReply({ embeds: [erro] })
 
     console.log(error)
   }

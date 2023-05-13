@@ -1,0 +1,14 @@
+const colors = {
+  INDIAN_RED: '#D15958',
+  CORAL_PINK: '#ED8A81',
+  CHERRY_BLOSSOM_PINK: '#F1A7AE',
+  TIFFANY_BLUE: '#8DC3C5',
+  PLATINUM: '#DFDFDF',
+  TIMBERWOLF: '#D7D1D0',
+  WENGE: '#77686A',
+  CHESTNUT: '#A55335',
+  BURNT_UMBER: '#883625',
+  BISTRE: '#3A1E14',
+}
+
+module.exports = colors
