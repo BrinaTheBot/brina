@@ -1,4 +1,5 @@
 const { EmbedBuilder } = require('discord.js')
+const loggerOperation = require('../../utils/log/loggerOperation')
 
 module.exports.run = async (inter) => {
   try {
@@ -8,12 +9,15 @@ module.exports.run = async (inter) => {
 
     await inter.reply({ embeds: [ping] })
 
+    loggerOperation(inter, 'Ping')
+
   } catch (error) {
     const erro = new EmbedBuilder()
       .setColor('Yellow')
-      .setDescription('Oh não, ocorreu um erro!\n Caso isso persista, contate os desenvolvedores.')
+      .setTitle('Oh não, ocorreu um erro!')
+      .setDescription('Caso isso persista, contate os desenvolvedores.')
 
-    await inter.reply({ embeds: [erro] })
+    await inter.editReply({ embeds: [erro] })
 
     console.log(error)
   }

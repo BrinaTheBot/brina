@@ -14,9 +14,10 @@ module.exports.run = async (inter) => {
   } catch (error) {
     const erro = new EmbedBuilder()
       .setColor('Yellow')
-      .setDescription('Oh não, ocorreu um erro!\n Caso isso persista, contate os desenvolvedores.')
+      .setTitle('Oh não, ocorreu um erro!')
+      .setDescription('Caso isso persista, contate os desenvolvedores.')
 
-    await inter.reply({ embeds: [erro] })
+    await inter.editReply({ embeds: [erro] })
 
     console.log(error)
   }

@@ -5,6 +5,7 @@ const DiscordVoice = require('@discordjs/voice')
 const vosk = require('vosk')
 const prism = require('prism-media')
 const path = require('path')
+//const loggerOperation = require('../../utils/log/loggerOperation')
 
 module.exports.run = async (inter) => {
   try {
@@ -14,7 +15,11 @@ module.exports.run = async (inter) => {
       .setColor('Orange')
       .setDescription('Entre em um canal de voz antes de usar o comando `/join`!')
 
-    if (!inter.member.voice.channel) { return await inter.editReply({ embeds: [noChannel] }) }
+    if (!inter.member.voice.channel) { 
+      await inter.editReply({ embeds: [noChannel] })
+      // loggerOperation(inter, 'Join')
+      return
+    }
 
     const connection = joinVoiceChannel({
       channelId: inter.member.voice.channel.id,
@@ -31,6 +36,7 @@ module.exports.run = async (inter) => {
       .setDescription('Estou conectada')
 
     await inter.editReply({ embeds: [conectado] })
+    // loggerOperation(inter, 'Join')
 
     voiceEntry(connection.receiver)
 
@@ -47,7 +53,7 @@ module.exports.run = async (inter) => {
     }
 
     vosk.setLogLevel(-1)
-    const pathToPt = path.resolve('src/assets/transcriber/voskModels/', 'pt/')
+    const pathToPt = path.resolve('src/resources/voskModels/', 'pt/')
     const pt = new vosk.Model(pathToPt)
     const rec = new vosk.Recognizer({ model: pt, sampleRate: 48000 })
 
