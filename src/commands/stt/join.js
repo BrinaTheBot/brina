@@ -5,7 +5,8 @@ const DiscordVoice = require('@discordjs/voice')
 const vosk = require('vosk')
 const prism = require('prism-media')
 const path = require('path')
-//const loggerOperation = require('../../utils/log/loggerOperation')
+const Guild = require('../../models/guild')
+const loggerOperation = require('../../utils/log/loggerOperation')
 
 module.exports.run = async (inter) => {
   try {
@@ -19,7 +20,7 @@ module.exports.run = async (inter) => {
 
     if (!inter.member.voice.channel) {
       await inter.editReply({ embeds: [noChannel] })
-      // loggerOperation(inter, 'Join')
+      loggerOperation(inter, 'Join')
       return
     }
 
@@ -38,7 +39,7 @@ module.exports.run = async (inter) => {
       .setDescription('Estou conectada')
 
     await inter.editReply({ embeds: [conectado] })
-    // loggerOperation(inter, 'Join')
+    loggerOperation(inter, 'Join')
 
     voiceEntry(connection.receiver)
 
@@ -55,9 +56,13 @@ module.exports.run = async (inter) => {
     }
 
     vosk.setLogLevel(-1)
-    const pathToPt = path.resolve('src/resources/voskModels/', 'pt/')
-    const pt = new vosk.Model(pathToPt)
-    const rec = new vosk.Recognizer({ model: pt, sampleRate: 48000 })
+
+    const getGuild = await Guild.findOne({ guildId: inter.guildId })
+    let lang = getGuild.guildBotLang
+
+    const pathToModel = path.resolve('src/resources/voskModels/', `${lang}/`)
+    const model = new vosk.Model(pathToModel)
+    const rec = new vosk.Recognizer({ model: model, sampleRate: 48000 })
 
     function voiceEntry(receiver) {
       connection.receiver.speaking.on('start', async (user) => {
@@ -90,7 +95,6 @@ module.exports.run = async (inter) => {
 
         decodedAudioStream.on('end', async () => {
           buffer = Buffer.concat(buffer)
-          // duration = buffer.length / 48000 / 4
 
           try {
             let new_buffer = await convertAudioStereoToMono(buffer)
@@ -108,6 +112,8 @@ module.exports.run = async (inter) => {
             const transcription = new EmbedBuilder()
               .setColor('F1A7AE')
               .setDescription(`<@${user}>: ${txt}`)
+              .setTimestamp()
+              .setFooter({ text: `Idioma: ${lang}` })
 
             await inter.channel.send({ embeds: [transcription] })
           } catch (error) {
