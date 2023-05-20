@@ -42,6 +42,10 @@ async function createCmd(Client) {
           type: ApplicationCommandOptionType.Subcommand
         }
       ]
+    },
+    {
+      name: 'info',
+      description: '[🛡 GUILD] - Informações sobre o bot'
     }
   ]
 
@@ -75,6 +79,10 @@ async function globalCmd(Client) {
           type: ApplicationCommandOptionType.Subcommand
         }
       ]
+    },
+    {
+      name: 'info',
+      description: 'Informações sobre o bot'
     }
   ]
   await Client.application?.commands.set(data)
