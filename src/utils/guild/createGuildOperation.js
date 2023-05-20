@@ -23,7 +23,6 @@ async function createGuildOperation(guild) {
         { $set: { active: true } }
       )
     }
-
   } catch (error) {
     console.log(error)
   }

@@ -14,7 +14,6 @@ module.exports.run = async (inter) => {
       updateGuildLangOperation(inter, enumLang.PT_BR)
       loggerOperation(inter, 'Lang')
     }
-
   } catch (error) {
     const erro = new EmbedBuilder()
       .setColor('Yellow')
@@ -25,7 +24,6 @@ module.exports.run = async (inter) => {
 
     console.log(error)
   }
-
 }
 
 module.exports.help = {

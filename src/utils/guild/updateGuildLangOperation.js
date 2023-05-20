@@ -16,7 +16,6 @@ async function updateGuildLangOperation(inter, lang) {
         .setDescription('Idioma atualizado')
 
       await inter.reply({ embeds: [success], ephemeral: true })
-
     } else {
       const fail = new EmbedBuilder()
         .setColor('Orange')
@@ -24,7 +23,6 @@ async function updateGuildLangOperation(inter, lang) {
 
       await inter.reply({ embeds: [fail], ephemeral: true })
     }
-
   } catch (error) {
     console.log(error)
   }

@@ -2,7 +2,7 @@ const { InteractionType, EmbedBuilder } = require('discord.js')
 
 const Client = require('../../index').Client
 
-Client.on('interactionCreate', async inter => {
+Client.on('interactionCreate', async (inter) => {
   if (inter.type === InteractionType.ApplicationCommand) {
     let commands = Client.commands.get(inter.commandName)
 

@@ -13,9 +13,11 @@ module.exports.run = async (inter) => {
 
     const noChannel = new EmbedBuilder()
       .setColor('Orange')
-      .setDescription('Entre em um canal de voz antes de usar o comando `/join`!')
+      .setDescription(
+        'Entre em um canal de voz antes de usar o comando `/join`!'
+      )
 
-    if (!inter.member.voice.channel) { 
+    if (!inter.member.voice.channel) {
       await inter.editReply({ embeds: [noChannel] })
       // loggerOperation(inter, 'Join')
       return
@@ -26,7 +28,7 @@ module.exports.run = async (inter) => {
       guildId: inter.channel.guild.id,
       adapterCreator: inter.channel.guild.voiceAdapterCreator,
       selfDeaf: false,
-      selfMute: true,
+      selfMute: true
     })
 
     connection
@@ -57,15 +59,16 @@ module.exports.run = async (inter) => {
     const pt = new vosk.Model(pathToPt)
     const rec = new vosk.Recognizer({ model: pt, sampleRate: 48000 })
 
-
     function voiceEntry(receiver) {
       connection.receiver.speaking.on('start', async (user) => {
-        if (user.bot) { return }
+        if (user.bot) {
+          return
+        }
 
         const audioStream = receiver.subscribe(user, {
           end: {
             behavior: DiscordVoice.EndBehaviorType.AfterSilence,
-            duration: 100,
+            duration: 100
           }
         })
         const decodedAudioStream = new prism.opus.Decoder({
@@ -92,8 +95,7 @@ module.exports.run = async (inter) => {
           try {
             let new_buffer = await convertAudioStereoToMono(buffer)
             let out = await transcribe(new_buffer)
-            if (out != null)
-              processCommandsQuery(out, user)
+            if (out != null) processCommandsQuery(out, user)
           } catch (e) {
             console.log('tmpraw rename: ' + e)
           }

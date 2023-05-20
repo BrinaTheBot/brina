@@ -13,9 +13,8 @@ async function createNewGuildOperation(guild) {
       guildNsfwFilter: guild.explicitContentFilter,
       guildBotLang: enumLang.EN_US
     })
-    
-    await newGuild.save()
 
+    await newGuild.save()
   } catch (error) {
     console.log(error)
   }
