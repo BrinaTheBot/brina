@@ -9,7 +9,7 @@
 </h2>
 
 <p align="center">
-  <a href="https://github.com/ashtrindade/brina/blob/main/LICENSE"><img alt="License GPL v3" src="https://img.shields.io/github/license/ashtrindade/brina"></a> 
+  <a href="https://github.com/BrinaTheBot/brina/blob/main/LICENSE"><img alt="License GPL v3" src="https://img.shields.io/github/license/BrinaTheBot/brina"></a> 
   <a href="https://github.com/discordjs/discord.js"><img alt="Discord.js v14" src="https://img.shields.io/badge/Discord.js-v14-7289da?&logo=discord&logoColor=white"><a/>
 </p>
 
