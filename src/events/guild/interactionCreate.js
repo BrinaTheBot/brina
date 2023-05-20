@@ -1,6 +1,5 @@
+const Client = require('../../../index').Client
 const { InteractionType, EmbedBuilder } = require('discord.js')
-
-const Client = require('../../index').Client
 
 Client.on('interactionCreate', async (inter) => {
   if (inter.type === InteractionType.ApplicationCommand) {

@@ -19,27 +19,27 @@ dotenv.config()
 
 Client.commands = new discord.Collection()
 Client.events = new discord.Collection()
-Client.assets = new discord.Collection()
 module.exports.Client = Client
 
 fs.readdirSync('./src/events/').forEach((dir) => {
-  var jsFiles = fs
-    .readdirSync('./src/events/')
-    .filter((f) => f.split('.').pop() === 'js')
-  if (jsFiles.length <= 0) return console.log('[EVENTS] 🔴 File not found!')
-  let check = false
-  jsFiles.forEach((file) => {
-    const eventGet = require(`./src/events/${file}`)
+  fs.readdir(`./src/events/${dir}`, (err) => {
+    if (err) throw err
 
-    try {
-      Client.events.set(eventGet.name, eventGet)
-      if (check == false) {
-        console.log('[EVENTS] 🟢 %s was loaded!', file)
-        check = true
+    let jsFiles = fs
+      .readdirSync(`./src/events/${dir}`)
+      .filter((f) => f.split('.').pop() === 'js')
+    if (jsFiles.length <= 0) return console.log('[EVENTS] 🔴 event not found!')
+
+    jsFiles.forEach((file) => {
+      let eventGet = require(`./src/events/${dir}/${file}`)
+      console.log(`[EVENTS] 🟢 ${file} was loaded!`)
+
+      try {
+        Client.events.set(eventGet.name, eventGet)
+      } catch (err) {
+        return console.log(err)
       }
-    } catch (error) {
-      return console.log(error)
-    }
+    })
   })
 })
 
@@ -47,14 +47,14 @@ fs.readdirSync('./src/commands/').forEach((dir) => {
   fs.readdir(`./src/commands/${dir}`, (err) => {
     if (err) throw err
 
-    var jsFiles = fs
+    let jsFiles = fs
       .readdirSync(`./src/commands/${dir}`)
       .filter((f) => f.split('.').pop() === 'js')
     if (jsFiles.length <= 0)
       return console.log('[COMMANDS] 🔴 Command not found!')
 
     jsFiles.forEach((file) => {
-      var fileGet = require(`./src/commands/${dir}/${file}`)
+      let fileGet = require(`./src/commands/${dir}/${file}`)
       console.log(`[COMMANDS] 🟢 ${file} was loaded!`)
 
       try {

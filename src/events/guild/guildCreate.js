@@ -1,5 +1,5 @@
-const Client = require('../../index').Client
-const createGuildOperation = require('../utils/guild/createGuildOperation')
+const Client = require('../../../index').Client
+const createGuildOperation = require('../../utils/guild/createGuildOperation')
 
 Client.on('guildCreate', async (guild) => {
   try {
