@@ -10,6 +10,9 @@
     "start": "node index.js",
     "prepare": "husky install"
   },
+  "lint-staged": {
+    "*.{js,jsx}": "eslint ."
+  },
   "author": "Ash Trindade",
   "license": "GPL-3.0 license",
   "dependencies": {
@@ -27,6 +30,7 @@
     "eslint": "^8.36.0",
     "eslint-config-prettier": "^8.8.0",
     "husky": "^8.0.3",
+    "lint-staged": "^13.2.2",
     "prettier": "^2.8.8",
     "pretty-quick": "^3.1.3"
   }
