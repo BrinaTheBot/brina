@@ -1,0 +1,2 @@
+- [Sobre](https://github.com/BrinaTheBot/brina/wiki)
+- [Política de Privacidade](https://github.com/BrinaTheBot/brina/wiki/Política-de-Privacidade)
