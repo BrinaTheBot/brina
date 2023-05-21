@@ -7,7 +7,11 @@
     "lint": "eslint src",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "node --trace-warnings index.js",
-    "start": "node index.js"
+    "start": "node index.js",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "*.{js,jsx}": "eslint ."
   },
   "author": "Ash Trindade",
   "license": "GPL-3.0 license",
@@ -23,6 +27,11 @@
     "vosk": "^0.3.39"
   },
   "devDependencies": {
-    "eslint": "^8.36.0"
+    "eslint": "^8.36.0",
+    "eslint-config-prettier": "^8.8.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.2",
+    "prettier": "^2.8.8",
+    "pretty-quick": "^3.1.3"
   }
 }

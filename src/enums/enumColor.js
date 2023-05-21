@@ -8,7 +8,7 @@ const colors = {
   WENGE: '#77686A',
   CHESTNUT: '#A55335',
   BURNT_UMBER: '#883625',
-  BISTRE: '#3A1E14',
+  BISTRE: '#3A1E14'
 }
 
 module.exports = colors

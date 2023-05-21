@@ -4,9 +4,8 @@ async function deleteGuildOperation(guild) {
   try {
     await Guild.findOneAndUpdate(
       { guildId: guild.id },
-      { $set: { active: false, deletedAt: new Date() } },
+      { $set: { active: false, deletedAt: new Date() } }
     )
-
   } catch (error) {
     console.log(error)
   }

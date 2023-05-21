@@ -5,7 +5,7 @@ async function createCmd(Client) {
   const data = [
     {
       name: 'ping',
-      description: '[🛡 GUILD] - Responde Pong!',
+      description: '[🛡 GUILD] - Responde Pong!'
     },
     {
       name: 'debug',
@@ -13,19 +13,19 @@ async function createCmd(Client) {
     },
     {
       name: 'server',
-      description: '[🛡 GUILD] - Informações do servidor',
+      description: '[🛡 GUILD] - Informações do servidor'
     },
     {
       name: 'join',
-      description: '[🛡 GUILD] - Adiciona a Brina ao canal de voz',
+      description: '[🛡 GUILD] - Adiciona a Brina ao canal de voz'
     },
     {
       name: 'leave',
-      description: '[🛡 GUILD] - Desconecta a Brina do canal de voz',
+      description: '[🛡 GUILD] - Desconecta a Brina do canal de voz'
     },
     {
       name: 'stt',
-      description: '[🛡 GUILD] - Inicia a transcrição',
+      description: '[🛡 GUILD] - Inicia a transcrição'
     },
     {
       name: 'lang',
@@ -34,7 +34,7 @@ async function createCmd(Client) {
         {
           name: 'en',
           description: 'Inglês EUA',
-          type: ApplicationCommandOptionType.Subcommand,
+          type: ApplicationCommandOptionType.Subcommand
         },
         {
           name: 'pt',
@@ -42,21 +42,27 @@ async function createCmd(Client) {
           type: ApplicationCommandOptionType.Subcommand
         }
       ]
+    },
+    {
+      name: 'info',
+      description: '[🛡 GUILD] - Informações sobre o bot'
     }
   ]
 
-  await Client.guilds.cache.get(process.env.SUPPORT_GUILD_ID)?.commands.set(data)
+  await Client.guilds.cache
+    .get(process.env.SUPPORT_GUILD_ID)
+    ?.commands.set(data)
 }
 
 async function globalCmd(Client) {
   const data = [
     {
       name: 'join',
-      description: 'Adicionar bot a um canal de voz',
+      description: 'Adicionar bot a um canal de voz'
     },
     {
       name: 'leave',
-      description: 'Desconecte o bot do canal de voz',
+      description: 'Desconecte o bot do canal de voz'
     },
     {
       name: 'lang',
@@ -65,7 +71,7 @@ async function globalCmd(Client) {
         {
           name: 'en',
           description: 'Inglês EUA',
-          type: ApplicationCommandOptionType.Subcommand,
+          type: ApplicationCommandOptionType.Subcommand
         },
         {
           name: 'pt',
@@ -73,6 +79,10 @@ async function globalCmd(Client) {
           type: ApplicationCommandOptionType.Subcommand
         }
       ]
+    },
+    {
+      name: 'info',
+      description: 'Informações sobre o bot'
     }
   ]
   await Client.application?.commands.set(data)

@@ -9,23 +9,22 @@
 </h2>
 
 <p align="center">
-  <a href="https://github.com/BrinaTheBot/brina/blob/main/LICENSE"><img alt="License GPL v3" src="https://img.shields.io/github/license/BrinaTheBot/brina"></a> 
+  <a href="https://github.com/ashtrindade/brina/blob/main/LICENSE"><img alt="License GPL v3" src="https://img.shields.io/github/license/ashtrindade/brina"></a> 
   <a href="https://github.com/discordjs/discord.js"><img alt="Discord.js v14" src="https://img.shields.io/badge/Discord.js-v14-7289da?&logo=discord&logoColor=white"><a/>
 </p>
 
-Brina is an accessibility bot that offers text transcription functions. She was created to help make Discord more accessible for users with disabilities, allowing them to fully enjoy the platform.
+Brina é um bot de acessibilidade que oferece funções de transcrição de texto. Ela foi criada para ajudar a tornar o Discord mais acessível para usuários com deficiência, permitindo que eles aproveitem totalmente a plataforma.
 
-## 👩🏽‍🎓 Current features
+## 👩🏽‍🎓 Ferramentas
 
-Speech to Text in Brazilian Portuguese and English using [Vosk API](https://github.com/alphacep/vosk-api).
+- Transcrição em pt-BR e en-US. (em breve mais idiomas)
 
-## 👩🏽‍🔧 Comming soon
+## 👩🏽‍🔧 Em breve
 
-- Support to more languages
-- Optical character recognition (OCR)
-- Localization
+- Localização dos comandos.
+- OCR (Optical character recognition)
 
-## 🙋🏽‍♀️ Contributing
+## 🙋🏽‍♀️ Contribua
 
 Contributions are welcome! ♥
 
@@ -33,7 +32,11 @@ Have an idea or would like to make a suggestion? Feel free to open an [issue](ht
 
 Please, follow the [Code of Conduct](https://github.com/ashtrindade/brina/blob/main/CODE_OF_CONDUCT.md). PR's that break the code will be ignored.
 
-## 🙇🏽‍♀️ Acknowledgements
+## 🕵🏽‍♀️ Privacidade
+
+Confira nossa [Política de Privacidade](https://github.com/BrinaTheBot/brina/wiki/Política-de-Privacidade).
+
+## 🙇🏽‍♀️ Agradecimentos
 
 - [Discord.js](https://github.com/discordjs/discord.js)
 - [Vosk API](https://github.com/alphacep/vosk-api)

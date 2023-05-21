@@ -24,7 +24,6 @@ module.exports.run = async (inter) => {
 
     await inter.reply({ embeds: [desconectado] })
     // loggerOperation(inter, 'Leave')
-
   } catch (error) {
     const erro = new EmbedBuilder()
       .setColor('Yellow')
