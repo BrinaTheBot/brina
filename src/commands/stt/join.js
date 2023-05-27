@@ -20,7 +20,7 @@ module.exports.run = async (inter) => {
 
     if (!inter.member.voice.channel) {
       await inter.editReply({ embeds: [noChannel] })
-      loggerOperation(inter, 'Join')
+      await loggerOperation(inter)
       return
     }
 
@@ -39,7 +39,7 @@ module.exports.run = async (inter) => {
       .setDescription('Estou conectada')
 
     await inter.editReply({ embeds: [conectado] })
-    loggerOperation(inter, 'Join')
+    await loggerOperation(inter)
 
     voiceEntry(connection.receiver)
 

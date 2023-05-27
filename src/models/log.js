@@ -2,17 +2,19 @@ const mongoose = require('mongoose')
 
 const logSchema = new mongoose.Schema(
   {
-    guild: { type: Object },
+    guild: {
+      guildId: { type: String },
+      channelId: { type: String }
+    },
     command: {
       commandName: { type: String },
-      interactionId: { type: String }
+      commandId: { type: String }
     },
-    triggeredBy: {
+    user: {
       userName: { type: String },
       userId: { type: String }
     },
-    channel: { type: String },
-    date: { type: Date, default: Date.now }
+    date: { type: String, default: new Date() }
   },
   { collection: 'logs' }
 )

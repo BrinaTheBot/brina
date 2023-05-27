@@ -1,21 +1,23 @@
 const Log = require('../../models/log')
 
-async function loggerOperation(inter, command) {
+async function loggerOperation(inter) {
   try {
     const newLog = new Log({
-      guild: {},
+      guild: {
+        guildId: inter.guildId,
+        channelId: inter.channelId
+      },
       command: {
-        commandName: command,
-        interactionId: inter.id
+        commandName: inter.commandName,
+        commandId: inter.commandId
       },
-      triggeredBy: {
-        userName: inter.user.username,
+      user: {
+        userName: inter.user.username + '#' + inter.user.discriminator,
         userId: inter.user.id
-      },
-      channel: inter.channel.id
+      }
     })
 
-    newLog.save()
+    await newLog.save()
   } catch (error) {
     console.log(error)
   }
