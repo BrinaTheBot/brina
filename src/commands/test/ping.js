@@ -7,7 +7,7 @@ module.exports.run = async (inter) => {
 
     await inter.reply({ embeds: [ping] })
 
-    loggerOperation(inter, 'Ping')
+    await loggerOperation(inter)
   } catch (error) {
     const erro = new EmbedBuilder()
       .setColor('Yellow')

@@ -8,11 +8,11 @@ module.exports.run = async (inter) => {
     if (!inter.isChatInputCommand()) return
 
     if (inter.options.getSubcommand() === 'en') {
-      updateGuildLangOperation(inter, enumLang.EN_US)
-      loggerOperation(inter, 'Lang')
+      await updateGuildLangOperation(inter, enumLang.EN_US)
+      await loggerOperation(inter)
     } else if (inter.options.getSubcommand() === 'pt') {
-      updateGuildLangOperation(inter, enumLang.PT_BR)
-      loggerOperation(inter, 'Lang')
+      await updateGuildLangOperation(inter, enumLang.PT_BR)
+      await loggerOperation(inter)
     }
   } catch (error) {
     const erro = new EmbedBuilder()
