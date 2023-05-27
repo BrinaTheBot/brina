@@ -33,12 +33,12 @@ async function createCmd(Client) {
       options: [
         {
           name: 'en',
-          description: 'Inglês EUA',
+          description: '[🛡 GUILD] - Inglês EUA',
           type: ApplicationCommandOptionType.Subcommand
         },
         {
           name: 'pt',
-          description: 'Português Brasileiro',
+          description: '[🛡 GUILD] - Português Brasileiro',
           type: ApplicationCommandOptionType.Subcommand
         }
       ]
@@ -46,6 +46,14 @@ async function createCmd(Client) {
     {
       name: 'info',
       description: '[🛡 GUILD] - Informações sobre o bot'
+    },
+    {
+      name: 'help',
+      description: '[🛡 GUILD] - Instruções de uso'
+    },
+    {
+      name: 'bug',
+      description: '[🛡 GUILD] - Reportar bug'
     }
   ]
 
@@ -83,6 +91,14 @@ async function globalCmd(Client) {
     {
       name: 'info',
       description: 'Informações sobre o bot'
+    },
+    {
+      name: 'help',
+      description: 'Instruções de uso'
+    },
+    {
+      name: 'bug',
+      description: 'Reportar bug'
     }
   ]
   await Client.application?.commands.set(data)
