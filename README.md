@@ -14,7 +14,6 @@
   </br>
   <a href="https://github.com/BrinaTheBot/brina/releases"><img alt="GitHub package.json version" src="https://img.shields.io/github/package-json/v/brinathebot/brina"></a>
   <a href="https://github.com/BrinaTheBot/brina/actions/workflows/fly.yml"><img alt="GitHub Workflow Status" src="https://img.shields.io/github/actions/workflow/status/brinathebot/brina/fly.yml"></a>
-  <a href="https://brina.pingpong.host"><img alt="PingPong uptime (last 30 days)" src="https://img.shields.io/pingpong/uptime/sp_b477c15ac266475e885f6d0b5a59c7be"></a>
 </p>
 
 Brina is an accessibility bot that offers text transcription functions. She was created to help make Discord more accessible for users with disabilities, allowing them to fully enjoy the platform.
